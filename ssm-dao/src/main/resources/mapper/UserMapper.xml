@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.rick.dao.user.UserMapper">
+    <!--
+		mapper接口的方法名称要和mapper映射文件的statement的id一致。
+		mapper接口的方法参数类型要和mapper映射文件的statement的parameterType的值一致，而且它的参数是一个。
+		mapper接口的方法返回值类型要和mapper映射文件的statement的resultType的值一致。
+	 -->
+    <!--parameterType可以省略-->
+    <insert id="insertUser" parameterType="com.rick.domain.User">
+        insert into user(name, age) values (#{name}, #{age})
+    </insert>
+
+    <!--注意如果返回的是集合，那应该设置为集合包含的类型，而不是集合本身。-->
+    <select id="queryAll" resultType="com.rick.domain.User">
+        select * from user
+    </select>
+
+</mapper>
