@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -30,7 +31,7 @@ public class UserController {
      */
     @RequestMapping(value = "/getAllUser", method = {RequestMethod.POST, RequestMethod.GET})
     @ResponseBody
-    public String getAllUser(HttpServletRequest request, Model model) {
+    public String getAllUser(HttpServletResponse response, HttpServletRequest request, Model model) {
         List<User> users = userService.queryAll();
         return users.toString();
     }
