@@ -1,9 +1,10 @@
 package com.rick;
 
-import org.apache.log4j.Logger;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -13,8 +14,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @Date: 2020-07-27
  */
 public class BaseTest {
-
-    protected Logger log = Logger.getLogger(this.getClass());
+    
+    protected final static Logger log = LoggerFactory.getLogger(BaseTest.class);
     protected static ApplicationContext appContext;
     protected static String[] string = new String[]{"spring-config.xml"};
 
@@ -22,9 +23,10 @@ public class BaseTest {
     public static void setUp() throws Exception {
         try {
             long start = System.currentTimeMillis();
-            System.out.println("加载开始..." + start);
+            log.info("加载开始：{}", start);
             appContext = new ClassPathXmlApplicationContext(string);
         } catch (Exception e) {
+            log.error("加载出错：{}", e.getMessage());
             e.printStackTrace();
         }
     }
