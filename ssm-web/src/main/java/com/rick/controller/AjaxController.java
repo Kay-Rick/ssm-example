@@ -1,7 +1,17 @@
+/*
+ * @Author: Kay_Rick@outlook.com
+ * @Date: 2021-01-24 21:16:09
+ * @LastEditors: Kay_Rick@outlook.com
+ * @LastEditTime: 2021-02-04 13:28:14
+ * @Description: 测试Ajax
+ */
 package com.rick.controller;
 
 import com.rick.domain.User;
 import com.rick.service.user.UserService;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +25,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/ajax")
 public class AjaxController {
-    public static final String ADMIN = "admin";
+
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private UserService userService;
@@ -23,7 +34,7 @@ public class AjaxController {
     @RequestMapping(value = "/a", method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
     public List<User> ajax1(String name, HttpServletResponse response) throws IOException {
-        System.out.println(name);
+        log.info("Ajax传递参数：name：{}", name);
         return userService.queryAll();
     }
 }

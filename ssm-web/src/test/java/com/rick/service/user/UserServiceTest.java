@@ -22,8 +22,10 @@ import static org.mockito.Mockito.when;
  * @Description: 利用Mockito测试框架进行单元测试
  */
 public class UserServiceTest {
+    
     @Mock
     private UserMapper userMapper;
+    
     @InjectMocks
     private UserServiceImpl userService;
 
