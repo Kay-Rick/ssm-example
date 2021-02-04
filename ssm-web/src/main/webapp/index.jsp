@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Kay
-  Date: 2021/1/14
-  Time: 19:50
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -30,9 +23,11 @@
     <br>
     <h2>测试文件上传</h2>
     ${msg}
-    <form action="${pageContext.request.contextPath}/upload" method="post" enctype="multipart/form-data">
-        用户名：<input type="text" name="username"/><br>
-        头像：<input type="file" name="photo"/><br>
+    <form action="${pageContext.request.contextPath}/file/upload" method="post" enctype="multipart/form-data">
+        用户名：<input type="text" name="username" /><br>
+        头像：<input type="file" name="photo" /><br>
+        <!-- 多文件上传要加 mutiple -->
+        文件：<input type="file" name="files" multiple></br>
         <input type="submit" value="上传">
     </form>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.4.1.min.js"></script>
